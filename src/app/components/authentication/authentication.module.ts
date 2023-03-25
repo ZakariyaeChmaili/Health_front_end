@@ -1,3 +1,4 @@
+import { MatIconModule } from '@angular/material/icon';
 import { HttpClientModule } from '@angular/common/http';
 import { MatButtonModule } from '@angular/material/button';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -9,11 +10,13 @@ import { AuthenticationRoutingModule } from './authentication-routing.module';
 import { LoginComponent } from './login/login.component';
 import { MatInputModule } from '@angular/material/input';
 import { IndexComponent } from './index.component';
+import { SignupComponent } from './signup/signup.component';
 
 @NgModule({
   declarations: [
     LoginComponent,
-    IndexComponent
+    IndexComponent,
+    SignupComponent
   ],
   imports: [
     CommonModule,
@@ -23,6 +26,8 @@ import { IndexComponent } from './index.component';
     FormsModule,
     ReactiveFormsModule,
     MatButtonModule,
+    MatInputModule,
+    MatIconModule
   ]
 })
 export class AuthenticationModule { }

@@ -1,44 +1,94 @@
-<div class="container mt-5">
-  <div class="row justify-content-center">
-    <div class="col col-lg-6">
-      <mat-card>
-        <mat-card-header>
-          <mat-card-title>Login</mat-card-title>
-        </mat-card-header>
-        <mat-card-content>
-          <form [formGroup]="loginFormGroup">
-            <mat-form-field>
-              <input
-                matInput
-                placeholder="Username"
-                formControlName="username"
-                name="username"
-                required
-              />
-            </mat-form-field>
-            <br />
-            <mat-form-field>
-              <input
-                matInput
-                placeholder="Password"
-                formControlName="password"
-                name="password"
-                required
-                type="password"
-              />
-            </mat-form-field>
-            <br />
-            <button
-              mat-raised-button
-              color="primary"
-              type="submit"
-              (click)="login()"
+<section class="h-100 gradient-form" style="background-color: #eee">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-xl-10">
+        <div class="card rounded-3 text-black">
+          <div class="row g-0">
+            <div class="col-lg-6">
+              <div class="card-body p-md-5 mx-md-4">
+                <div class="text-center">
+                  <img
+                    src="https://th.bing.com/th/id/R.9270d9f5e7525103c6c0c52516d711d6?rik=%2fONKGy5Ux3wsBw&pid=ImgRaw&r=0"
+                    style="width: 130px"
+                    alt="logo"
+                  />
+                  <h4 class="mt-1 mb-5 pb-1">We are The Lotus Team</h4>
+                </div>
+
+                <form>
+                  <p>Please login to your account</p>
+
+                  <div class="form-outline mb-4">
+                    <mat-form-field appearance="fill">
+                      <mat-label>UserName</mat-label>
+                      <input matInput placeholder="Placeholder" />
+                      <mat-icon matSuffix>person</mat-icon>
+                    </mat-form-field>
+                  </div>
+
+                  <div class="form-outline mb-4">
+                    <mat-form-field appearance="fill">
+                      <mat-label>Enter your password</mat-label>
+                      <input matInput [type]="hide ? 'password' : 'text'" />
+                      <button
+                        mat-icon-button
+                        matSuffix
+                        (click)="hide = !hide"
+                        [attr.aria-label]="'Hide password'"
+                        [attr.aria-pressed]="hide"
+                      >
+                        <mat-icon>{{
+                          hide ? "visibility_off" : "visibility"
+                        }}</mat-icon>
+                      </button>
+                    </mat-form-field>
+                  </div>
+
+                  <div class="text-center pt-1 mb-5 pb-1">
+                    <button
+                      mat-raised-button
+                      class="me-3"
+                      color="primary"
+                      type="button"
+                    >
+                      Log in
+                    </button>
+                    <a class="text-muted" href="#">Forgot password?</a>
+                  </div>
+
+                  <div
+                    class="d-flex align-items-center justify-content-center pb-4"
+                  >
+                    <p class="mb-0 me-2">Don't have an account?</p>
+                    <button
+                      type="button"
+                      routerLink="/authentication/signup"
+                      color="accent"
+                      mat-raised-button
+                    >
+                      Create new
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+            <div
+              style="background-color: aquamarine"
+              class="col-lg-6 d-flex align-items-center gradient-custom-2"
             >
-              Login
-            </button>
-          </form>
-        </mat-card-content>
-      </mat-card>
+              <div class="text-white px-3 py-4 p-md-5 mx-md-4">
+                <h4 class="mb-4">We are more than just a company</h4>
+                <p class="small mb-0">
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
+                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                  laboris nisi ut aliquip ex ea commodo consequat.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
-</div>
+</section>
