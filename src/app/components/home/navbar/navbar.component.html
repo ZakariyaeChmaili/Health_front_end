@@ -1,17 +1,38 @@
 <mat-toolbar>
-  <button mat-icon-button class="example-icon" (click)="sidebarToggle()" aria-label="Example icon-button with menu icon">
+  <button
+    mat-icon-button
+    class="example-icon"
+    (click)="sidebarToggle()"
+    aria-label="Example icon-button with menu icon"
+  >
     <mat-icon>menu</mat-icon>
   </button>
-  <span>MEDID<span style="color:rgb(52, 215, 161)">CORD</span></span>
+  <span>MEDI<span style="color: rgb(52, 215, 161)">CORD</span></span>
   <span class="example-spacer"></span>
-  <button class="mx-3" color="primary" mat-flat-button [matMenuTriggerFor]="menu">Menu</button>
-  <mat-menu #menu="matMenu">
-    <button mat-menu-item>Item 1</button>
-    <button mat-menu-item>Item 2</button>
-  </mat-menu>
 
-  <button class="mx-3" mat-icon-button [matMenuTriggerFor]="account"><mat-icon>person</mat-icon></button>
-  <mat-menu #account="matMenu">
-    <button color="warn" mat-menu-item>Log-out</button>
-  </mat-menu>
+    <div  class="mx-1">
+      <button  (click)="openDialog()" mat-fab color="primary">
+        <mat-icon>share</mat-icon>
+      </button>
+    </div>
+    <!-- <div  class="mx-1">
+      <button color="primary" mat-flat-button [matMenuTriggerFor]="menu">
+        Menu
+      </button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item>Item 1</button>
+        <button mat-menu-item>Item 2</button>
+      </mat-menu>
+    </div> -->
+    <div  class="mx-1">
+      <button mat-icon-button [matMenuTriggerFor]="account">
+        <mat-icon>person</mat-icon>
+      </button>
+      <mat-menu #account="matMenu">
+        <button routerLink="profile" color="warn" mat-menu-item>Profile</button>
+        <button color="warn" mat-menu-item>Log-out</button>
+      </mat-menu>
+    </div>
+
+
 </mat-toolbar>

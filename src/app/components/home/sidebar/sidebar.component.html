@@ -1,10 +1,13 @@
-<mat-nav-list>
+<mat-nav-list class="align-items-center">
 
-  <a mat-list-item [routerLink]="'/accounts'"> Accounts </a>
-  <a mat-list-item [routerLink]="'/create-account'"> Create Account </a>
-  <a mat-list-item [routerLink]="'/contacts'"> Contacts </a>
-  <a mat-list-item [routerLink]="'/create-contact'"> Create Contact </a>
-  <a mat-list-item [routerLink]="'/activities'"> Activities </a>
-  <a mat-list-item [routerLink]="'/create-activity'"> Create Activity </a>
+  <a mat-list-item  routerLink='/home/reports'>
+    <mat-icon>assignment</mat-icon>
+    <span>Reports</span>
+  </a>
+
+  <a mat-list-item  routerLink='/vaccines'>
+    <mat-icon>healing</mat-icon>
+    <span>Vaccines</span>
+  </a>
 
 </mat-nav-list>

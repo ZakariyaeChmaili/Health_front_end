@@ -11,11 +11,23 @@ import {MatButtonModule} from '@angular/material/button'
 import {MatListModule} from '@angular/material/list'
 import {MatToolbarModule} from '@angular/material/toolbar'
 import {MatMenuModule} from '@angular/material/menu'
+import {MatGridListModule} from '@angular/material/grid-list';
+import { ReportsComponent } from './reports/reports.component';
+import {MatTableModule} from '@angular/material/table';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import { MatInputModule } from '@angular/material/input';
+import { CodeGeneratorComponent } from './navbar/code-generator/code-generator.component';
+import {MatDialogModule} from '@angular/material/dialog';
+import { ProfileComponent } from './profile/profile.component';
 @NgModule({
   declarations: [
     HomeIndexComponent,
     SidebarComponent,
-    NavbarComponent
+    NavbarComponent,
+    ReportsComponent,
+    CodeGeneratorComponent,
+    ProfileComponent,
+
   ],
   imports: [
     CommonModule,
@@ -25,7 +37,13 @@ import {MatMenuModule} from '@angular/material/menu'
     MatIconModule,
     MatListModule,
     MatToolbarModule,
-    MatMenuModule
+    MatMenuModule,
+    MatGridListModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatInputModule,
+    MatDialogModule
+
   ]
 })
 export class HomeModule { }
