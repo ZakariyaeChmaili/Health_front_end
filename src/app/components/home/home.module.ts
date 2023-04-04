@@ -19,6 +19,15 @@ import { MatInputModule } from '@angular/material/input';
 import { CodeGeneratorComponent } from './navbar/code-generator/code-generator.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import { ProfileComponent } from './profile/profile.component';
+import { PatientCodeDialogComponent } from './sidebar/patient-code-dialog/patient-code-dialog.component';
+import { VaccineComponent } from './vaccine/vaccine.component';
+import { ReportFormComponent } from './reports/report-form/report-form.component';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 @NgModule({
   declarations: [
     HomeIndexComponent,
@@ -27,9 +36,14 @@ import { ProfileComponent } from './profile/profile.component';
     ReportsComponent,
     CodeGeneratorComponent,
     ProfileComponent,
+    PatientCodeDialogComponent,
+    VaccineComponent,
+    ReportFormComponent,
 
   ],
   imports: [
+    FormsModule,
+    ReactiveFormsModule,
     CommonModule,
     HomeRoutingModule,
     MatSidenavModule,
@@ -42,7 +56,10 @@ import { ProfileComponent } from './profile/profile.component';
     MatTableModule,
     MatPaginatorModule,
     MatInputModule,
-    MatDialogModule
+    MatDialogModule,
+    MatCheckboxModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
 
   ]
 })

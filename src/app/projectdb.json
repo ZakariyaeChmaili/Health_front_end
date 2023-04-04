@@ -1,0 +1,45 @@
+{
+  "reports": [
+    {
+      "id": 1,
+      "datecrea": "2022-12-31",
+      "titre": "Patient with flu symptoms",
+      "doctor_id": 123,
+      "patient_id": 456,
+      "traitement_id": 789
+    },
+    {
+      "id": 2,
+      "datecrea": "2023-01-01",
+      "titre": "Patient with stomachache",
+      "doctor_id": 123,
+      "patient_id": 789,
+      "traitement_id": 321
+    },
+    {
+      "id": 3,
+      "datecrea": "2023-01-02",
+      "titre": "Patient with headache",
+      "doctor_id": 456,
+      "patient_id": 123,
+      "traitement_id": 654
+    }
+
+  ],
+  "vaccin": [
+    {
+      "id": 1,
+      "observation": "Patient received flu vaccine",
+      "type": "Flu",
+      "doctor_id": 123,
+      "patient_id": 456
+    },
+    {
+      "id": 2,
+      "observation": "Patient received tetanus vaccine",
+      "type": "Tetanus",
+      "doctor_id": 456,
+      "patient_id": 123
+    }
+  ]
+}

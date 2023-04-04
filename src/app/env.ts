@@ -1,4 +1,4 @@
 //env variables
 export const env = {
-    "url": "http://localhost:8080/api"
+    "url": "http://localhost:3000"
 }

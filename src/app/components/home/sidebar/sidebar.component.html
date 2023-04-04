@@ -1,13 +1,27 @@
 <mat-nav-list class="align-items-center">
 
+<ng-container *ngIf="flag;else patientCode">
   <a mat-list-item  routerLink='/home/reports'>
     <mat-icon>assignment</mat-icon>
     <span>Reports</span>
   </a>
 
-  <a mat-list-item  routerLink='/vaccines'>
+  <a mat-list-item  routerLink='/home/vaccines'>
     <mat-icon>healing</mat-icon>
     <span>Vaccines</span>
   </a>
+</ng-container>
+
+  <!-- <a mat-list-item  routerLink='/vaccines'>
+    <mat-icon>healing</mat-icon>
+    <span>Patient's Code</span>
+  </a> -->
+<ng-template #patientCode>
+  <a mat-fab extended  (click)="openDialog()" >
+    <mat-icon>link</mat-icon>
+    Patient's Code
+  </a>
+</ng-template>
+
 
 </mat-nav-list>
