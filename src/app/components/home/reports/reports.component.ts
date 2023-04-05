@@ -23,6 +23,8 @@ export interface Report {
   styleUrls: ['./reports.component.scss'],
 })
 export class ReportsComponent implements AfterViewInit {
+  role : boolean = JSON.parse(localStorage.getItem('user')!).role=='doctor' ? true : false;
+
   displayedColumns: string[] = [
     'id',
     'titre',

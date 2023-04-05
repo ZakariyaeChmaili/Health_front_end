@@ -1,6 +1,7 @@
 import { AuthenticationService } from './../services/authentication.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -12,7 +13,8 @@ export class LoginComponent implements OnInit {
   hide = true;
   constructor(
     private fb: FormBuilder,
-    private authService: AuthenticationService
+    private authService: AuthenticationService,
+    private route: Router
   ) {
     this.loginFormGroup = this.fb.group({
       username: [''],
@@ -31,7 +33,9 @@ export class LoginComponent implements OnInit {
       )
       .subscribe({
         next: (data) => {
-          console.log(data);
+          if(data){
+            this.route.navigate(['/home'])
+          }
         }
       });
   }

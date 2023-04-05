@@ -10,14 +10,10 @@ import { PatientCodeDialogComponent } from 'src/app/components/home/sidebar/pati
   styleUrls: ['./sidebar.component.scss']
 })
 export class SidebarComponent {
-  flag: boolean = false;
+  flag : boolean = JSON.parse(localStorage.getItem('user')!).role=='doctor' ? false : true;
     constructor(public dialog:MatDialog,private route:Router) { }
     openDialog() {
-      const dialogRef = this.dialog.open(PatientCodeDialogComponent, {
-        data: {
-          animal: 'panda',
-        },
-      });
+      const dialogRef = this.dialog.open(PatientCodeDialogComponent,);
       dialogRef.afterClosed().subscribe((result) => {
         // console.log(`Dialog result: ${result}`);
         this.flag = true;

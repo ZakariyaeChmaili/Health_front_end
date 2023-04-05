@@ -10,7 +10,7 @@
   <span>MEDI<span style="color: rgb(52, 215, 161)">CORD</span></span>
   <span class="example-spacer"></span>
 
-    <div hidden  class="mx-1">
+    <div [hidden]="role" class="mx-1">
       <button  (click)="openDialog()" mat-fab color="primary">
         <mat-icon>share</mat-icon>
       </button>
@@ -30,7 +30,7 @@
       </button>
       <mat-menu #account="matMenu">
         <button routerLink="profile" color="warn" mat-menu-item>Profile</button>
-        <button color="warn" mat-menu-item>Log-out</button>
+        <button (click)="logout()" color="warn" mat-menu-item>Log-out</button>
       </mat-menu>
     </div>
 

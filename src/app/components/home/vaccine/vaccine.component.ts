@@ -22,6 +22,8 @@ export interface Vaccine {
   styleUrls: ['./vaccine.component.scss'],
 })
 export class VaccineComponent {
+  role : boolean = JSON.parse(localStorage.getItem('user')!).role=='doctor' ? true : false;
+
   displayedColumns: string[] = [
     'id',
     'observation',

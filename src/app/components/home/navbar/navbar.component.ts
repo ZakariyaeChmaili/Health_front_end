@@ -1,6 +1,7 @@
 import { CodeGeneratorComponent } from './code-generator/code-generator.component';
 import { Component, EventEmitter, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -9,8 +10,11 @@ import { MatDialog } from '@angular/material/dialog';
   styleUrls: ['./navbar.component.scss'],
 })
 export class NavbarComponent {
+  role : boolean = JSON.parse(localStorage.getItem('user')!).role=='doctor' ? true : false;
   @Output() drawer: any = new EventEmitter();
-  constructor(public dialog: MatDialog) {}
+  constructor(public dialog: MatDialog,private route: Router) {
+    console.log();
+  }
 
   openDialog() {
     this.dialog.open(CodeGeneratorComponent);
@@ -19,4 +23,10 @@ export class NavbarComponent {
     this.drawer.emit();
   }
 
+
+  logout(){
+    localStorage.removeItem('user');
+    // window.location.reload();
+    this.route.navigate(['/landing-page'])
+  }
 }

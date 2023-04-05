@@ -5,14 +5,17 @@
       <mat-icon matSuffix>search</mat-icon>
     </mat-form-field>
 
-    <button
-      class="ms-3"
-      mat-fab
-      color="primary"
-      aria-label="Example icon button with a delete icon"
-    >
-      <mat-icon>add</mat-icon>
-    </button>
+<ng-container *ngIf="role">
+  <button
+  class="ms-3"
+  mat-fab
+  color="primary"
+
+>
+  <mat-icon>add</mat-icon>
+</button>
+</ng-container>
+
   </div>
   <div class="row">
     <div class="col">

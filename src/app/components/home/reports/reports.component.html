@@ -8,9 +8,12 @@
       <mat-icon matSuffix>search</mat-icon>
     </mat-form-field>
 
-      <button class="ms-3" mat-fab color="primary" (click)="reportForm()">
-        <mat-icon>add</mat-icon>
-      </button>
+<ng-container *ngIf="role">
+  <button class="ms-3" mat-fab color="primary" (click)="reportForm()">
+    <mat-icon>add</mat-icon>
+  </button>
+</ng-container>
+
 
   </div>
   <div class="row">

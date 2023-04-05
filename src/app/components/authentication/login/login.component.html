@@ -15,13 +15,13 @@
                   <h4 class="mt-1 mb-5 pb-1">We are The Lotus Team</h4>
                 </div>
 
-                <form>
+                <form [formGroup]="loginFormGroup">
                   <p>Please login to your account</p>
 
                   <div class="form-outline mb-4">
                     <mat-form-field appearance="fill">
                       <mat-label>UserName</mat-label>
-                      <input matInput placeholder="Placeholder" />
+                      <input formControlName="username" matInput placeholder="Placeholder" />
                       <mat-icon matSuffix>person</mat-icon>
                     </mat-form-field>
                   </div>
@@ -29,7 +29,7 @@
                   <div class="form-outline mb-4">
                     <mat-form-field appearance="fill">
                       <mat-label>Enter your password</mat-label>
-                      <input matInput [type]="hide ? 'password' : 'text'" />
+                      <input formControlName="password" matInput [type]="hide ? 'password' : 'text'" />
                       <button
                         mat-icon-button
                         matSuffix
@@ -46,7 +46,8 @@
 
                   <div class="text-center pt-1 mb-5 pb-1">
                     <button
-                    routerLink="/home"
+                    (click)="login()"
+
                       mat-raised-button
                       class="me-3"
                       color="primary"

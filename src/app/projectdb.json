@@ -23,8 +23,18 @@
       "doctor_id": 456,
       "patient_id": 123,
       "traitement_id": 654
+    },
+    {
+      "titre": "sgfh",
+      "datecrea": "2023-04-12T00:00:00.000Z",
+      "patient_id": 456,
+      "doctor_id": 123,
+      "traitement_id": 654,
+      "id": 4
+    },
+    {
+      "id": 5
     }
-
   ],
   "vaccin": [
     {
@@ -40,6 +50,26 @@
       "type": "Tetanus",
       "doctor_id": 456,
       "patient_id": 123
+    }
+  ],
+  "users": [
+    {
+      "id": 123,
+      "email": "patient",
+      "password": "patient",
+      "role": "patient"
+    },
+    {
+      "id": 456,
+      "email": "doctor",
+      "password": "doctor",
+      "role": "doctor"
+    },
+    {
+      "id": 789,
+      "email": "admin",
+      "password": "admin",
+      "role": "admin"
     }
   ]
 }
