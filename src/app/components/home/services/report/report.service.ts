@@ -10,8 +10,8 @@ export class ReportService {
   constructor(private http:HttpClient) { }
 
 
-  getReport(){
-    return this.http.get(`${this.url}/reports`);
+  getReport(patientId :number){
+    return this.http.get(`${this.url}/reports?patient_id=${patientId}`);
   }
   addReport(data:any){
     return this.http.post(`${this.url}/reports`,data);

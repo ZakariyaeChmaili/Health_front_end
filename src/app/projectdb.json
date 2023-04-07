@@ -33,6 +33,17 @@
       "id": 4
     },
     {
+      "titre": "asd",
+      "datecrea": "2023-04-20T00:00:00.000Z",
+      "patient_id": 456,
+      "doctor_id": 123,
+      "traitement_id": 654,
+      "traitments": [
+        {
+          "name": "asd",
+          "period": "22"
+        }
+      ],
       "id": 5
     }
   ],
@@ -71,5 +82,6 @@
       "password": "admin",
       "role": "admin"
     }
-  ]
+  ],
+  "generatedCode": []
 }

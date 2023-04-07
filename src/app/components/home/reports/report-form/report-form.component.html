@@ -6,24 +6,62 @@
       <input formControlName="titre" matInput />
     </mat-form-field>
 
-
     <mat-form-field appearance="fill" class="example-form-field">
       <mat-label>Choose a date</mat-label>
-      <input formControlName="datecrea" matInput [matDatepicker]="datepicker">
+      <input formControlName="datecrea" matInput [matDatepicker]="datepicker" />
       <mat-hint>MM/DD/YYYY</mat-hint>
-      <mat-datepicker-toggle matIconSuffix [for]="datepicker"></mat-datepicker-toggle>
+      <mat-datepicker-toggle
+        matIconSuffix
+        [for]="datepicker"
+      ></mat-datepicker-toggle>
       <mat-datepicker #datepicker>
         <mat-datepicker-actions>
           <button mat-button matDatepickerCancel>Cancel</button>
-          <button mat-raised-button color="primary" matDatepickerApply>Apply</button>
+          <button mat-raised-button color="primary" matDatepickerApply>
+            Apply
+          </button>
         </mat-datepicker-actions>
       </mat-datepicker>
     </mat-form-field>
 
+    <div class="row text-center justify-content-center my-3">
+      <div class="col col-lg-6">
+        <button
+          color="primary"
+          (click)="addTraitment()"
+          mat-raised-button
+          matIconSuffix
+        >
+          Add Traitment
+          <mat-icon>add</mat-icon>
+        </button>
+      </div>
+    </div>
+    <ng-container *ngIf="traitementFlag"> </ng-container>
 
-    <!-- <mat-checkbox [formControl]="hideRequiredControl">Hide required marker</mat-checkbox> -->
+    <div formArrayName="traitments">
+      <ng-container
+        *ngFor="let traitment of getTraitment().controls; let index = index"
+        [formGroupName]="index"
+      >
+        <div class="row">
+          <mat-form-field class="col col-lg-6 small mb-1">
+            <mat-label>Traitment Name</mat-label>
+            <input formControlName="name" matInput />
+          </mat-form-field>
+          <mat-form-field class="col col-lg-4 small mb-1">
+            <mat-label>Period</mat-label>
+            <input formControlName="period" matInput />
+          </mat-form-field>
+          <button (click)="deleteTraitment(index)" color="warn" mat-icon-button>
+            <mat-icon>delete</mat-icon>
+          </button>
+        </div>
+      </ng-container>
+    </div>
+  </form>
 
-    <!-- <div class="row gx-3 mb-3">
+  <!-- <div class="row gx-3 mb-3">
       <mat-form-field class="col-md-6">
         <mat-label>First Name</mat-label>
         <input matInput />
@@ -60,10 +98,8 @@
         <input matInput />
       </mat-form-field>
     </div> -->
-
-  </form>
 </mat-dialog-content>
 <mat-dialog-actions align="end">
   <button mat-button mat-dialog-close>Cancel</button>
-  <button mat-button (click)="addReport()"  cdkFocusInitial>Add</button>
+  <button mat-button (click)="addReport()" cdkFocusInitial>Add</button>
 </mat-dialog-actions>

@@ -1,6 +1,14 @@
 <h1 mat-dialog-title>Generated Code</h1>
-<div mat-dialog-content class="lead text-center">
-  THIS-21-A-32-TEST-54-CODE
+<div mat-dialog-content >
+  <div class="row px-5">
+    <div class="col align-self-center">
+      <span>{{generatedCode}}</span>
+    </div>
+    <div class="col col-2">
+      <button (click)="generateCode()" [disabled]="!buttonFlag" class="d-block" color="primary" mat-icon-button><mat-icon>play_arrow</mat-icon></button>
+      <button mat-icon-button (click)="deleteCode()" [disabled]="buttonFlag" color="warn"><mat-icon>stop</mat-icon></button>
+    </div>
+  </div>
 </div>
 <div class="d-flex justify-content-end" mat-dialog-actions>
   <button mat-button mat-dialog-close>Close</button>

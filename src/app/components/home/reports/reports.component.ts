@@ -4,7 +4,9 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort, Sort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import { Router } from '@angular/router';
 import { ReportFormComponent } from 'src/app/components/home/reports/report-form/report-form.component';
+import { GeneratedCodeService } from 'src/app/components/home/services/generatedCode/generated-code.service';
 import { ReportService } from 'src/app/components/home/services/report/report.service';
 
 export interface Report {
@@ -16,15 +18,15 @@ export interface Report {
   traitement_id: number;
 }
 
-
 @Component({
   selector: 'app-reports',
   templateUrl: './reports.component.html',
   styleUrls: ['./reports.component.scss'],
 })
 export class ReportsComponent implements AfterViewInit {
-  role : boolean = JSON.parse(localStorage.getItem('user')!).role=='doctor' ? true : false;
-
+  flag: boolean;
+  user: any = JSON.parse(localStorage.getItem('user')!);
+  id: number;
   displayedColumns: string[] = [
     'id',
     'titre',
@@ -37,12 +39,37 @@ export class ReportsComponent implements AfterViewInit {
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
-  constructor(private reportService: ReportService,public dialog : MatDialog) {
+  constructor(
+    private reportService: ReportService,
+    public dialog: MatDialog,
+    private route: Router,
+    private generatedCodeService: GeneratedCodeService
+  ) {
+    console.log('you are in reports');
+    this.flag = this.user.role == 'doctor' ? true : false;
+    if (this.user.role == 'doctor') {
+      this.generatedCodeService
+        .getGeneratedCode(
+          JSON.parse(localStorage.getItem('user')!).patientGeneratedCode
+        )
+        .subscribe({
+          next: (res: any) => {
+            console.log(res);
+            if (!res[0]) {
+              this.route.navigate(['/block']);
+            }
+          },
+        });
+
+      this.id = JSON.parse(localStorage.getItem('patient')!).id;
+    } else {
+      this.id = this.user.id;
+    }
     this.getReport();
   }
 
   getReport() {
-    this.reportService.getReport().subscribe({
+    this.reportService.getReport(this.id).subscribe({
       next: (res: any) => {
         this.dataSource = new MatTableDataSource<Report>(res);
       },
@@ -52,23 +79,20 @@ export class ReportsComponent implements AfterViewInit {
     });
   }
   ngAfterViewInit() {
-    this.dataSource.paginator = this.paginator;
+    // this.dataSource.paginator = this.paginator;
   }
 
-
-
-  reportForm(){
+  reportForm() {
     const dialogRef = this.dialog.open(ReportFormComponent);
-    dialogRef.afterClosed().subscribe(result => {
+    dialogRef.afterClosed().subscribe((result) => {
       console.log(result);
-      this.reportService.addReport(result).subscribe({
-        next: (res: any) => {
-          this.getReport();
-        }
-      });
-    }
-    );
-
-
+      if (result) {
+        this.reportService.addReport(result).subscribe({
+          next: (res: any) => {
+            this.getReport();
+          },
+        });
+      }
+    });
   }
 }

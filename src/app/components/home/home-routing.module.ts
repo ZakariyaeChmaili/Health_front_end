@@ -4,12 +4,13 @@ import { HomeIndexComponent } from './home-index.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { VaccineComponent } from 'src/app/components/home/vaccine/vaccine.component';
+import { ReportsGuard } from 'src/app/guards/reports.guard';
 
 const routes: Routes = [
   {path:'',pathMatch:'full',redirectTo:'profile'},
   {path:'', component:HomeIndexComponent,children:[
-    {path:'reports', component:ReportsComponent},
-    {path:'vaccines',component:VaccineComponent},
+    {path:'reports',canActivate:[ReportsGuard], component:ReportsComponent},
+    {path:'vaccines',component:VaccineComponent,canActivate:[ReportsGuard]},
     {path:'profile',component:ProfileComponent},
   ]}
 ];

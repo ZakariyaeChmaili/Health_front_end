@@ -2,10 +2,10 @@
 <div mat-dialog-content>
   <mat-form-field class="d-block" appearance="fill">
     <mat-label>Code</mat-label>
-    <input matInput>
+    <input [(ngModel)]="code" matInput>
   </mat-form-field>
 <div class="d-flex justify-content-end">
-  <button (click)="close()" mat-raised-button mat-dialog-close>Submit</button>
+  <button (click)="close()" mat-raised-button >Submit</button>
 
 </div>
 </div>

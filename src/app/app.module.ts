@@ -10,11 +10,13 @@ import {MatCardModule} from '@angular/material/card';
 import {MatProgressBarModule} from '@angular/material/progress-bar'
 import {MatButtonModule} from '@angular/material/button';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BlockComponent } from './components/block/block.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
+    BlockComponent,
 
   ],
   imports: [

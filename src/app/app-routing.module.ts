@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { BlockComponent } from 'src/app/components/block/block.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'landing-page', pathMatch: 'full' },
@@ -23,6 +24,10 @@ const routes: Routes = [
     loadChildren: () =>
       import('./components/home/home.module').then((m) => m.HomeModule),
   },
+  {
+    path: 'block',
+    component:BlockComponent
+  }
 ];
 
 @NgModule({
