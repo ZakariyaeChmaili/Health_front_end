@@ -1,10 +1,11 @@
 import { Component, ViewChild } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { GeneratedCodeService } from 'src/app/components/home/services/generatedCode/generated-code.service';
-import { ReportService } from 'src/app/components/home/services/report/report.service';
 import { VaccineService } from 'src/app/components/home/services/vaccine/vaccine.service';
+import { VaccineFormComponent } from 'src/app/components/home/vaccine/vaccine-form/vaccine-form.component';
 
 export interface Vaccine {
   id: number;
@@ -20,24 +21,20 @@ export interface Vaccine {
   styleUrls: ['./vaccine.component.scss'],
 })
 export class VaccineComponent {
+  kword: string = '';
   flag: boolean =
     JSON.parse(localStorage.getItem('user')!).role == 'doctor' ? true : false;
   user: any;
   id: number;
-  displayedColumns: string[] = [
-    'id',
-    'observation',
-    'type',
-    'patient_id',
-    'doctor_id',
-  ];
+  displayedColumns: string[] = ['id', 'observation', 'type'];
   dataSource!: MatTableDataSource<Vaccine>;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   constructor(
     private vaccineService: VaccineService,
     private route: Router,
-    private generatedCodeService: GeneratedCodeService
+    private generatedCodeService: GeneratedCodeService,
+    public dialog: MatDialog
   ) {
     this.user = JSON.parse(localStorage.getItem('user')!);
     this.flag = this.user.role == 'doctor' ? true : false;
@@ -49,7 +46,7 @@ export class VaccineComponent {
         .subscribe({
           next: (res: any) => {
             console.log(res);
-            if (!res[0]) {
+            if (!res) {
               this.route.navigate(['/block']);
             }
           },
@@ -60,11 +57,41 @@ export class VaccineComponent {
       this.id = this.user.id;
     }
 
-    this.getReport();
+    this.getVaccines();
   }
 
-  getReport() {
-    this.vaccineService.getVaccine(this.id).subscribe({
+  getVaccines() {
+    this.vaccineService.getVaccines(this.id).subscribe({
+      next: (res: any) => {
+        this.dataSource = new MatTableDataSource<Vaccine>(res);
+        console.log(res);
+      },
+      error: (err: any) => {
+        console.log(err);
+      },
+    });
+  }
+
+  vaccineForm() {
+    this.dialog.open(VaccineFormComponent);
+    const dialogRef = this.dialog.open(VaccineFormComponent);
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log(result);
+      if (result) {
+        this.vaccineService.addVaccine(result).subscribe({
+          next: (res: any) => {
+            this.getVaccines();
+            // this.dialog.closeAll();
+          },
+        });
+      }
+    });
+  }
+
+  searchVaccin() {
+    if(this.kword == '') return this.getVaccines();
+    console.log(this.kword);
+    this.vaccineService.searchVaccine(this.kword, this.id).subscribe({
       next: (res: any) => {
         this.dataSource = new MatTableDataSource<Vaccine>(res);
         console.log(res);

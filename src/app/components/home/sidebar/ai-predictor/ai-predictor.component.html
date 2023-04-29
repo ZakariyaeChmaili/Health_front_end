@@ -1,0 +1,58 @@
+<div class="container">
+  <div class="row">
+    <h1 mat-dialog-title class="lead">Artificial Inteligence (BETA)</h1>
+    <div mat-dialog-content>
+      <div class="row justify-content-center mb-5">
+        <div class="col text-center">
+          <span>With the help of AI predict your Blood Pressure</span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4 mb-4">
+          <div class="form-outline">
+            <mat-form-field class="col" appearance="fill">
+              <mat-label>Temperature</mat-label>
+              <input matInput [(ngModel)]="temperature" />
+            </mat-form-field>
+          </div>
+          <div class="form-outline">
+            <mat-form-field class="col" appearance="fill">
+              <mat-label>Blood Sugar</mat-label>
+              <input matInput [(ngModel)]="bloodSugar" />
+            </mat-form-field>
+          </div>
+          <div class="form-outline">
+            <mat-form-field class="col" appearance="fill">
+              <mat-label>Heart Beat</mat-label>
+              <input matInput [(ngModel)]="heartBeat" />
+            </mat-form-field>
+          </div>
+        </div>
+
+        <div class="col-md-8 mb-4">
+          <mat-card>
+            <mat-card-content>
+              <h1>Result</h1>
+              <ng-container *ngIf="flag">
+                <mat-spinner></mat-spinner>
+              </ng-container>
+              <ng-container *ngIf="!flag">
+                <div class="row justify-content-center">
+                  <div class="col justify-content-center text-center">
+                    <mat-icon matListItemIcon>monitor_heart</mat-icon>
+                    <div matListItemTitle>Blood Pressure</div>
+                    <div matListItemLine>{{predictedValue}}</div>
+                  </div>
+                </div>
+              </ng-container>
+            </mat-card-content>
+          </mat-card>
+        </div>
+      </div>
+
+      <div class="d-flex justify-content-end">
+        <button (click)="predict()" mat-raised-button>Predict</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -24,17 +24,12 @@ export interface Report {
   styleUrls: ['./reports.component.scss'],
 })
 export class ReportsComponent implements AfterViewInit {
+  kword: string = '';
   flag: boolean;
   user: any = JSON.parse(localStorage.getItem('user')!);
+  patient: any = JSON.parse(localStorage.getItem('patient')!);
   id: number;
-  displayedColumns: string[] = [
-    'id',
-    'titre',
-    'datecrea',
-    'doctor_id',
-    'patient_id',
-    'traitement_id',
-  ];
+  displayedColumns: string[] = ['id_Repo', 'titre', 'datecrea', 'details'];
   dataSource!: MatTableDataSource<Report>;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -55,7 +50,7 @@ export class ReportsComponent implements AfterViewInit {
         .subscribe({
           next: (res: any) => {
             console.log(res);
-            if (!res[0]) {
+            if (!res) {
               this.route.navigate(['/block']);
             }
           },
@@ -69,7 +64,7 @@ export class ReportsComponent implements AfterViewInit {
   }
 
   getReport() {
-    this.reportService.getReport(this.id).subscribe({
+    this.reportService.getReports(this.id).subscribe({
       next: (res: any) => {
         this.dataSource = new MatTableDataSource<Report>(res);
       },
@@ -77,6 +72,15 @@ export class ReportsComponent implements AfterViewInit {
         console.log(err);
       },
     });
+    // this.dataSource = new MatTableDataSource<Report>(this.user.listeRapport);
+    // this.reportService.getReports(this.id).subscribe({
+    //   next: (res: any) => {
+    //     this.dataSource = new MatTableDataSource<Report>(res);
+    //   },
+    //   error: (err: any) => {
+    //     console.log(err);
+    //   },
+    // });
   }
   ngAfterViewInit() {
     // this.dataSource.paginator = this.paginator;
@@ -93,6 +97,19 @@ export class ReportsComponent implements AfterViewInit {
           },
         });
       }
+    });
+  }
+
+  searchReport() {
+    if (this.kword == '') {
+      this.getReport();
+      return;
+    }
+    console.log(this.kword);
+    this.reportService.searchReport(this.kword, this.id).subscribe({
+      next: (res: any) => {
+        this.dataSource = new MatTableDataSource<Report>(res);
+      },
     });
   }
 }

@@ -1,0 +1,112 @@
+<div class="container">
+<div class="row justify-content-center">
+  <div class="col col-4">
+<div class="card p-3 shadow">
+  <div class="lead text-center ">Filter By Year</div>
+  <mat-divider class="my-2"></mat-divider>
+  <mat-form-field appearance="fill">
+    <mat-label>Select year</mat-label>
+    <mat-select (selectionChange)="getcharts()"  [(ngModel)]="filterYear" name="year">
+      <mat-option value="all">All</mat-option>
+      <mat-option *ngFor="let year of yearList" [value]="year">{{year}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+</div>
+  </div>
+</div>
+  <div class="row my-3">
+    <div class="col col-lg-6">
+      <div class="card shadow">
+        <div class="card-header">
+            <span class="lead">Heart Beat </span>
+            <mat-icon>favorite</mat-icon>
+        </div>
+        <div class="card-body">
+          <div class="chart-wrapper">
+            <canvas
+              baseChart
+              [datasets]="HeartBeatlineChartData"
+              [labels]="HeartBeatlineChartLabels"
+              [options]="HeartBeatlineChartOptions"
+              [legend]="HeartBeatlineChartLegend"
+              [plugins]="HeartBeatlineChartPlugins"
+            >
+            </canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col col-lg-6">
+      <div class="card shadow">
+        <div class="card-header">
+          <span class="lead"
+            >Blood Sugar <mat-icon matListItemIcon>bloodtype</mat-icon>
+          </span>
+        </div>
+        <div class="card-body">
+          <div class="chart-wrapper">
+            <canvas
+              baseChart
+              [datasets]="BloodSugarlineChartData"
+              [labels]="BloodSugarlineChartLabels"
+              [options]="BloodSugarlineChartOptions"
+              [legend]="BloodSugarlineChartLegend"
+              [plugins]="BloodSugarlineChartPlugins"
+            >
+            </canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row my-3">
+    <div class="col col-lg-6">
+      <div class="card shadow">
+        <div class="card-header">
+          <span class="lead"
+            >Blood Pressure <mat-icon matListItemIcon>monitor_heart</mat-icon>
+          </span>
+        </div>
+        <div class="card-body">
+          <div class="chart-wrapper">
+            <canvas
+              baseChart
+              [datasets]="BloodPressurelineChartData"
+              [labels]="BloodPressurelineChartLabels"
+              [options]="BloodPressurelineChartOptions"
+              [legend]="BloodPressurelineChartLegend"
+              [plugins]="BloodPressurelineChartPlugins"
+            >
+            </canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col col-lg-6">
+      <div class="card shadow">
+        <div class="card-header">
+          <span class="lead"
+            >Temperature <mat-icon matListItemIcon>thermostat</mat-icon>
+          </span>
+        </div>
+        <div class="card-body">
+          <div class="chart-wrapper">
+            <canvas
+              baseChart
+              [datasets]="TemperaturelineChartData"
+              [labels]="TemperaturelineChartLabels"
+              [options]="TemperaturelineChartOptions"
+              [legend]="TemperaturelineChartLegend"
+              [plugins]="TemperaturelineChartPlugins"
+            >
+            </canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

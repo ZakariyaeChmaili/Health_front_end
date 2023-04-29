@@ -11,6 +11,8 @@ import { LoginComponent } from './login/login.component';
 import { MatInputModule } from '@angular/material/input';
 import { IndexComponent } from './index.component';
 import { SignupComponent } from './signup/signup.component';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 
 @NgModule({
   declarations: [
@@ -27,7 +29,9 @@ import { SignupComponent } from './signup/signup.component';
     ReactiveFormsModule,
     MatButtonModule,
     MatInputModule,
-    MatIconModule
+    MatIconModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
   ]
 })
 export class AuthenticationModule { }

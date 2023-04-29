@@ -10,6 +10,16 @@
     <mat-icon>healing</mat-icon>
     <span>Vaccines</span>
   </a>
+
+  <a mat-list-item  routerLink='/home/dashboard'>
+    <mat-icon>dashboard</mat-icon>
+    <span>Dashboard</span>
+  </a>
+
+  <a mat-list-item (click)="openAi()"  routerLink='/home/dashboard'>
+    <mat-icon>adb</mat-icon>
+    <span>A-I</span>
+  </a>
 </ng-container>
 
   <!-- <a mat-list-item  routerLink='/vaccines'>

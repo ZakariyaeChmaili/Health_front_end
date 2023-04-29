@@ -5,8 +5,8 @@
       <span>{{generatedCode}}</span>
     </div>
     <div class="col col-2">
-      <button (click)="generateCode()" [disabled]="!buttonFlag" class="d-block" color="primary" mat-icon-button><mat-icon>play_arrow</mat-icon></button>
-      <button mat-icon-button (click)="deleteCode()" [disabled]="buttonFlag" color="warn"><mat-icon>stop</mat-icon></button>
+      <button (click)="generateCode()" [disabled]="GeneratedFlag" class="d-block" color="primary" mat-icon-button><mat-icon>play_arrow</mat-icon></button>
+      <button mat-icon-button (click)="deleteCode()" [disabled]="DeleteFlag" color="warn"><mat-icon>stop</mat-icon></button>
     </div>
   </div>
 </div>

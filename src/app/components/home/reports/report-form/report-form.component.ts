@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { FormArray, FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { ReloadService } from 'src/app/components/home/services/reload/reload.service';
 
@@ -18,13 +18,19 @@ export class ReportFormComponent implements OnInit {
     private dialogRef:MatDialogRef<ReportFormComponent>,
     ) {
     // console.log(this.hideRequiredControl)
+    let user:any = JSON.parse(localStorage.getItem("user")!);
+    let patient : any = JSON.parse(localStorage.getItem("patient")!);
     this.reportFromGroup = this.fb.group({
-      titre: [''],
-      datecrea: [''],
-      patient_id: [456],
-      doctor_id: [123],
-      traitement_id: [654],
-      traitments:this.fb.array([])
+      titre: ['',Validators.required],
+      datecrea: ['',Validators.required],
+      doctor: {id:user.id},
+      patient: {id:patient.id},
+      // traitement_id: [654],
+      bloodPressure:['',Validators.required],
+      bloodSugar:['',Validators.required],
+      heartBeat:['',Validators.required],
+      temperature:['',Validators.required],
+      listeTraitement:this.fb.array([])
     });
 
 
@@ -32,14 +38,15 @@ export class ReportFormComponent implements OnInit {
   }
 
    getTraitment(){
-    return this.reportFromGroup.get('traitments') as FormArray;
+    return this.reportFromGroup.get('listeTraitement') as FormArray;
   }
 
   addTraitment(){
     console.log(this.getTraitment().controls)
     const traitment = this.fb.group({
-      name:[''],
-      period:['']
+      nomtraimenet:[''],
+      period:[''],
+      dose:['']
     })
     this.getTraitment().push(traitment);
   }
@@ -53,6 +60,7 @@ export class ReportFormComponent implements OnInit {
   addReport(){
     console.log(this.reportFromGroup.value);
     this.data = this.reportFromGroup.value;
+    if(this.reportFromGroup.valid)
     this.dialogRef.close(this.reportFromGroup.value);
 
   }

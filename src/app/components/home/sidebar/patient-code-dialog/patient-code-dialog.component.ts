@@ -20,7 +20,11 @@ export class PatientCodeDialogComponent {
     this.generatedCodeService.getGeneratedCode(this.code).subscribe({
       next: (res: any) => {
         console.log(res);
-        if (res.length > 0) {
+        let user:any = JSON.parse(localStorage.getItem('user')!);
+        user.patientGeneratedCode = res.code;
+        localStorage.setItem('user', JSON.stringify(user));
+
+        if (res) {
           this.dialogRef.close(res);
         }
       },

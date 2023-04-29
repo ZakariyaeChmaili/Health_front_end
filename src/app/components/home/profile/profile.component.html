@@ -1,85 +1,135 @@
 <div class="container-xl px-4 mt-4">
-
   <div class="row">
-      <div class="col-xl-4">
-          <!-- Profile picture card-->
-          <div class="card mb-4 mb-xl-0">
-              <div class="card-header">Profile Picture</div>
-              <div class="card-body text-center">
-                  <!-- Profile picture image-->
-                  <img class="img-account-profile rounded-circle mb-2" src="https://st3.depositphotos.com/6672868/13701/v/600/depositphotos_137014128-stock-illustration-user-profile-icon.jpg" alt="">
-                  <!-- Profile picture help block-->
-                  <div class="small font-italic text-muted mb-4">JPG or PNG no larger than 5 MB</div>
-                  <!-- Profile picture upload button-->
-                  <button  mat-raised-button type="button">Upload new image</button>
-              </div>
+    <div class="col-xl-4">
+      <!-- Profile picture card-->
+      <div class="card mb-4 mb-xl-0">
+        <div class="card-header">Profile Picture</div>
+        <div class="card-body text-center">
+          <!-- Profile picture image-->
+          <img
+            class="img-account-profile rounded-circle mb-2"
+            src="https://st3.depositphotos.com/6672868/13701/v/600/depositphotos_137014128-stock-illustration-user-profile-icon.jpg"
+            alt=""
+          />
+          <!-- Profile picture help block-->
+          <div class="small font-italic text-muted mb-4">
+            JPG or PNG no larger than 5 MB
           </div>
+          <!-- Profile picture upload button-->
+          <button mat-raised-button type="button">Upload new image</button>
+        </div>
       </div>
-      <div class="col-xl-8">
-          <!-- Account details card-->
-          <div class="card mb-4">
-              <div class="card-header">Account Details</div>
-              <div class="card-body">
-                  <form>
-                      <mat-form-field class="col-12 small mb-1">
-                        <mat-label>Username</mat-label>
-                        <input matInput >
-                      </mat-form-field>
-                      <!-- Form Row-->
-                      <div class="row gx-3 mb-3">
-                          <!-- Form Group (first name)-->
-                          <mat-form-field class="col-md-6">
-                            <mat-label>First Name</mat-label>
-                            <input matInput >
-                          </mat-form-field>
-                          <!-- Form Group (last name)-->
-                          <mat-form-field class="col-md-6">
-                            <mat-label>Last Name</mat-label>
-                            <input matInput >
-                          </mat-form-field>
-                      </div>
-                      <!-- Form Row        -->
-                      <div class="row gx-3 mb-3">
-                        <!-- Form Group (first name)-->
-                        <mat-form-field class="col-md-6">
-                          <mat-label>Phone</mat-label>
-                          <input matInput >
-                        </mat-form-field>
-                        <!-- Form Group (last name)-->
-                        <mat-form-field class="col-md-6">
-                          <mat-label>Last Name</mat-label>
-                          <input matInput >
-                        </mat-form-field>
-                    </div>
-                      <!-- Form Group (email address)-->
-                      <mat-form-field class="col-12 small mb-1">
-                        <mat-label>E-mail</mat-label>
-                        <input matInput >
-                      </mat-form-field>
-                      <!-- Form Row-->
-                      <div class="row gx-3 mb-3">
-                        <!-- Form Group (first name)-->
-                        <mat-form-field class="col-md-6">
-                          <mat-label>Input</mat-label>
-                          <input matInput >
-                        </mat-form-field>
-                        <!-- Form Group (last name)-->
-                        <mat-form-field class="col-md-6">
-                          <mat-label>Last Name</mat-label>
-                          <input matInput >
-                        </mat-form-field>
-                    </div>
-                      <!-- Save changes button-->
-                      <div class="d-flex justify-content-end">
-                      <button color="primary" mat-raised-button type="button">Save changes</button>
+    </div>
+    <div class="col-xl-8">
+      <!-- Account details card-->
+      <div class="card mb-4">
+        <div class="card-header">Account Details</div>
+        <div class="card-body">
+          <form [formGroup]="profileFormGroup">
+            <mat-form-field class="col-12 small mb-1">
+              <mat-label>Address</mat-label>
+              <input matInput formControlName="addresse" />
+            </mat-form-field>
+            <!-- Form Row-->
+            <div class="row gx-3 mb-3">
+              <!-- Form Group (first name)-->
+              <mat-form-field class="col-md-6">
+                <mat-label>First Name</mat-label>
+                <input matInput formControlName="nom" />
+              </mat-form-field>
+              <!-- Form Group (last name)-->
+              <mat-form-field class="col-md-6">
+                <mat-label>Last Name</mat-label>
+                <input matInput formControlName="prenom" />
+              </mat-form-field>
+            </div>
+            <!-- Form Row        -->
+            <div class="row gx-3 mb-3">
+              <!-- Form Group (first name)-->
+              <mat-form-field class="col-md-6">
+                <mat-label>Phone</mat-label>
+                <input matInput formControlName="tel" />
+              </mat-form-field>
+              <!-- Form Group (last name)-->
+              <mat-form-field class="col-md-6">
+                <mat-label>Nationality</mat-label>
+                <input matInput formControlName="nationality" />
+              </mat-form-field>
+            </div>
+            <!-- Form Group (email address)-->
+            <div class="row gx-3 mb-3">
+              <mat-form-field appearance="fill" class="col-md-6">
+                <mat-label>BirthDay</mat-label>
+                <input
+                  formControlName="datenaiss"
+                  matInput
+                  [matDatepicker]="datepicker"
+                />
+                <mat-hint>MM/DD/YYYY</mat-hint>
+                <mat-datepicker-toggle
+                  matIconSuffix
+                  [for]="datepicker"
+                ></mat-datepicker-toggle>
+                <mat-datepicker #datepicker>
+                  <mat-datepicker-actions>
+                    <button mat-button matDatepickerCancel>Cancel</button>
+                    <button
+                      mat-raised-button
+                      color="primary"
+                      matDatepickerApply
+                    >
+                      Apply
+                    </button>
+                  </mat-datepicker-actions>
+                </mat-datepicker>
+              </mat-form-field>
+              <ng-container *ngIf="!isDoctor">
+                <mat-form-field class="col-md-6">
+                  <mat-label>Weight</mat-label>
+                  <input matInput formControlName="poids" />
+                </mat-form-field>
+              </ng-container>
+            </div>
 
-                      </div>
-                  </form>
+            <!-- Form Row-->
+            <div class="row gx-3 mb-3">
+              <!-- Form Group (first name)-->
+              <mat-form-field class="col-md-6">
+                <mat-label>Family Status</mat-label>
+                <input matInput formControlName="sutuaFamil" />
+              </mat-form-field>
+              <!-- Form Group (last name)-->
+
+              <mat-form-field class="col-md-6">
+                <mat-label>City</mat-label>
+                <input matInput formControlName="ville" />
+              </mat-form-field>
+            </div>
+            <ng-container *ngIf="!isDoctor">
+              <div class="row gx-3 mb-3">
+                <!-- Form Group (first name)-->
+                <mat-form-field class="col-md-6">
+                  <mat-label>Father's Name</mat-label>
+                  <input matInput formControlName="nompere" />
+                </mat-form-field>
+                <!-- Form Group (last name)-->
+
+                <mat-form-field class="col-md-6">
+                  <mat-label>Mother's Name</mat-label>
+                  <input matInput formControlName="nommere" />
+                </mat-form-field>
               </div>
-          </div>
+            </ng-container>
+
+            <!-- Save changes button-->
+            <div class="d-flex justify-content-end">
+              <button color="primary" mat-raised-button (click)="updatePerson()" type="button">
+                Save changes
+              </button>
+            </div>
+          </form>
+        </div>
       </div>
+    </div>
   </div>
 </div>
-
-
-

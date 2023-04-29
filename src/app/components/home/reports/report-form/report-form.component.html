@@ -24,6 +24,45 @@
       </mat-datepicker>
     </mat-form-field>
 
+
+    <div class="row">
+      <div class="col-md-6 mb-4">
+        <div class="form-outline">
+          <mat-form-field appearance="fill">
+            <mat-label>Blood Pressure</mat-label>
+            <input matInput formControlName="bloodPressure" />
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="col-md-6 mb-4">
+        <div class="form-outline">
+          <mat-form-field appearance="fill">
+            <mat-label>Blood Sugar</mat-label>
+            <input matInput formControlName="bloodSugar" />
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6 mb-4">
+        <div class="form-outline">
+          <mat-form-field appearance="fill">
+            <mat-label>Heart Beat</mat-label>
+            <input matInput formControlName="heartBeat" />
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="col-md-6 mb-4">
+        <div class="form-outline">
+          <mat-form-field appearance="fill">
+            <mat-label>Temperature</mat-label>
+            <input matInput formControlName="temperature" />
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+
     <div class="row text-center justify-content-center my-3">
       <div class="col col-lg-6">
         <button
@@ -39,19 +78,23 @@
     </div>
     <ng-container *ngIf="traitementFlag"> </ng-container>
 
-    <div formArrayName="traitments">
+    <div formArrayName="listeTraitement">
       <ng-container
         *ngFor="let traitment of getTraitment().controls; let index = index"
         [formGroupName]="index"
       >
         <div class="row">
-          <mat-form-field class="col col-lg-6 small mb-1">
+          <mat-form-field class="col col-lg-5 small mb-1">
             <mat-label>Traitment Name</mat-label>
-            <input formControlName="name" matInput />
+            <input formControlName="nomtraimenet" matInput />
           </mat-form-field>
-          <mat-form-field class="col col-lg-4 small mb-1">
+          <mat-form-field class="col col-lg-3 small mb-1">
             <mat-label>Period</mat-label>
             <input formControlName="period" matInput />
+          </mat-form-field>
+          <mat-form-field  class="col col-lg-2 small mb-1">
+            <mat-label>Dose</mat-label>
+            <input formControlName="dose" matInput />
           </mat-form-field>
           <button (click)="deleteTraitment(index)" color="warn" mat-icon-button>
             <mat-icon>delete</mat-icon>
@@ -61,43 +104,6 @@
     </div>
   </form>
 
-  <!-- <div class="row gx-3 mb-3">
-      <mat-form-field class="col-md-6">
-        <mat-label>First Name</mat-label>
-        <input matInput />
-      </mat-form-field>
-      <mat-form-field class="col-md-6">
-        <mat-label>Last Name</mat-label>
-        <input matInput />
-      </mat-form-field>
-    </div>
-
-    <div class="row gx-3 mb-3">
-      <mat-form-field class="col-md-6">
-        <mat-label>Phone</mat-label>
-        <input matInput />
-      </mat-form-field>
-      <mat-form-field class="col-md-6">
-        <mat-label>Last Name</mat-label>
-        <input matInput />
-      </mat-form-field>
-    </div>
-
-    <mat-form-field class="col-12 small mb-1">
-      <mat-label>E-mail</mat-label>
-      <input matInput />
-    </mat-form-field>
-
-    <div class="row gx-3 mb-3">
-      <mat-form-field class="col-md-6">
-        <mat-label>Input</mat-label>
-        <input matInput />
-      </mat-form-field>
-      <mat-form-field class="col-md-6">
-        <mat-label>Last Name</mat-label>
-        <input matInput />
-      </mat-form-field>
-    </div> -->
 </mat-dialog-content>
 <mat-dialog-actions align="end">
   <button mat-button mat-dialog-close>Cancel</button>

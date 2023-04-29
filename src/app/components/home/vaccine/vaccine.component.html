@@ -1,7 +1,7 @@
 <div class="container mt-4">
   <div class="row justify-content-center">
     <mat-form-field class="col col-8">
-      <input matInput placeholder="Search" />
+      <input [(ngModel)]="kword" matInput placeholder="Search" (keyup.enter)="searchVaccin()" />
       <mat-icon matSuffix>search</mat-icon>
     </mat-form-field>
 
@@ -10,9 +10,9 @@
   class="ms-3"
   mat-fab
   color="primary"
-
+  (click)="vaccineForm()"
 >
-  <mat-icon>add</mat-icon>
+  <mat-icon >add</mat-icon>
 </button>
 </ng-container>
 
@@ -39,18 +39,6 @@
             <td mat-cell *matCellDef="let element">
               {{ element.observation }}
             </td>
-          </ng-container>
-
-          <!-- Weight Column -->
-          <ng-container matColumnDef="doctor_id">
-            <th mat-header-cell *matHeaderCellDef>Doctor ID</th>
-            <td mat-cell *matCellDef="let element">{{ element.doctor_id }}</td>
-          </ng-container>
-
-          <!-- Symbol Column -->
-          <ng-container matColumnDef="patient_id">
-            <th mat-header-cell *matHeaderCellDef>Patient ID</th>
-            <td mat-cell *matCellDef="let element">{{ element.patient_id }}</td>
           </ng-container>
 
           <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

@@ -1,0 +1,83 @@
+<div class="container-fluid mat-display-3">
+  <h2>Report Details</h2>
+
+  <div class="row justify-content-center mt-3">
+    <div class="col-md-8 align-self-center">
+      <mat-card class="p-4 text-center shadow rounded-5">
+        <mat-card-title class="my-2">{{this.report.titre}}</mat-card-title>
+        <mat-card-subtitle class="my-2">{{this.report.datecrea}}</mat-card-subtitle>
+        <mat-card-content>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique
+            sit minus suscipit totam possimus magnam minima magni distinctio
+            quae corporis voluptate laboriosam fugit, ipsam exercitationem dicta
+            voluptates natus nisi ad!
+          </p>
+        </mat-card-content>
+      </mat-card>
+    </div>
+    <div class="col-md-4 justify-content-center d-flex">
+      <mat-list>
+        <div mat-subheader class="lead">Diagnostics</div>
+        <mat-divider></mat-divider>
+        <mat-list-item>
+          <mat-icon matListItemIcon>favorite</mat-icon>
+          <div matListItemTitle>Heart Beat</div>
+          <div matListItemLine>{{this.report.heartBeat}}</div>
+        </mat-list-item>
+        <mat-list-item>
+          <mat-icon matListItemIcon>bloodtype</mat-icon>
+          <div matListItemTitle>Blood Sugar</div>
+          <div matListItemLine>{{this.report.bloodSugar}}g</div>
+        </mat-list-item>
+        <mat-list-item>
+          <mat-icon matListItemIcon>monitor_heart</mat-icon>
+          <div matListItemTitle>Blood Pressure</div>
+          <div matListItemLine>{{this.report.bloodPressure}}</div>
+        </mat-list-item>
+        <mat-list-item>
+          <mat-icon matListItemIcon>thermostat</mat-icon>
+          <div matListItemTitle>Temperature</div>
+          <div matListItemLine>{{this.report.temperature}} C</div>
+        </mat-list-item>
+      </mat-list>
+    </div>
+  </div>
+
+
+<ng-container *ngIf="this.traitmentList.length>0">
+  <div class="row mb-5">
+    <div class="col-lg-4">
+      <div class="card shadow p-3">
+        <div class="lead">Traitements</div>
+<div class="card-body">
+  <ng-container *ngFor="let traitment of traitmentList">
+    <mat-accordion class="example-headers-align" multi>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title class="d-flex justify-content-between">
+            {{traitment.nomtraimenet}}
+            <mat-icon>medication</mat-icon>
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">Period: {{traitment.period}}</li>
+          <li class="list-group-item">Dosage: {{traitment.dose}}</li>
+        </ul>
+      </mat-expansion-panel>
+    </mat-accordion>
+
+    <mat-divider class="my-3"></mat-divider>
+  </ng-container>
+
+</div>
+
+      </div>
+    </div>
+  </div>
+</ng-container>
+
+
+
+
+</div>

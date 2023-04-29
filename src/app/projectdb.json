@@ -45,6 +45,15 @@
         }
       ],
       "id": 5
+    },
+    {
+      "titre": "",
+      "datecrea": "",
+      "patient_id": 456,
+      "doctor_id": 123,
+      "traitement_id": 654,
+      "traitments": [],
+      "id": 6
     }
   ],
   "vaccin": [
@@ -61,6 +70,54 @@
       "type": "Tetanus",
       "doctor_id": 456,
       "patient_id": 123
+    },
+    {
+      "observation": "",
+      "datecrea": "2023-04-12T00:00:00.000Z",
+      "type": "boxwika",
+      "doctor_id": "",
+      "patient_id": "",
+      "id": 3
+    },
+    {
+      "observation": "",
+      "datecrea": "",
+      "type": "",
+      "doctor_id": "",
+      "patient_id": "",
+      "id": 4
+    },
+    {
+      "observation": "",
+      "datecrea": "",
+      "type": "",
+      "doctor_id": "",
+      "patient_id": "",
+      "id": 5
+    },
+    {
+      "observation": "adsf",
+      "datecrea": "2023-04-11T00:00:00.000Z",
+      "type": "adf",
+      "doctor_id": "",
+      "patient_id": "",
+      "id": 6
+    },
+    {
+      "observation": "yakhti kan 3amer bih ou 7na nferxkho l9adiya",
+      "datecrea": "2023-04-11T00:00:00.000Z",
+      "type": "boxwika",
+      "doctor_id": 456,
+      "patient_id": 123,
+      "id": 7
+    },
+    {
+      "observation": "asdas",
+      "datecrea": "2023-04-19T00:00:00.000Z",
+      "type": "asdasd",
+      "doctor_id": 456,
+      "patient_id": 123,
+      "id": 8
     }
   ],
   "users": [
@@ -83,5 +140,93 @@
       "role": "admin"
     }
   ],
-  "generatedCode": []
+  "generatedCode": [
+    {
+      "code": "5feac0d0-83d3-4597-be71-b3fe59609d7c",
+      "patient_id": 123,
+      "id": 1
+    }
+  ],
+  "diagnostic":[
+      {
+        "id": 1,
+        "HeartBeat": "78",
+        "BloodSugar": "3.2",
+        "BloodPressure": "121",
+        "Temperature": "36.7",
+        "timestamp": "2020-03-28T13:45:30.000Z"
+      },
+      {
+        "id": 2,
+        "HeartBeat": "72",
+        "BloodSugar": "2.8",
+        "BloodPressure": "117",
+        "Temperature": "36.5",
+        "timestamp": "2021-03-27T10:15:20.000Z"
+      },
+      {
+        "id": 3,
+        "HeartBeat": "85",
+        "BloodSugar": "3.9",
+        "BloodPressure": "123",
+        "Temperature": "37.1",
+        "timestamp": "2018-03-26T09:30:45.000Z"
+      },
+      {
+        "id": 4,
+        "HeartBeat": "67",
+        "BloodSugar": "4.1",
+        "BloodPressure": "129",
+        "Temperature": "36.9",
+        "timestamp": "2019-03-25T18:20:10.000Z"
+      },
+      {
+        "id": 5,
+        "HeartBeat": "80",
+        "BloodSugar": "2.5",
+        "BloodPressure": "117",
+        "Temperature": "36.5",
+        "timestamp": "2020-03-24T16:35:15.000Z"
+      },
+      {
+        "id": 6,
+        "HeartBeat": "92",
+        "BloodSugar": "3.8",
+        "BloodPressure": "128",
+        "Temperature": "37.2",
+        "timestamp": "2022-03-23T12:40:30.000Z"
+      },
+      {
+        "id": 7,
+        "HeartBeat": "77",
+        "BloodSugar": "3.1",
+        "BloodPressure": "125",
+        "Temperature": "36.8",
+        "timestamp": "2021-03-22T08:50:40.000Z"
+      },
+      {
+        "id": 8,
+        "HeartBeat": "70",
+        "BloodSugar": "2.7",
+        "BloodPressure": "118",
+        "Temperature": "36.6",
+        "timestamp": "2023-03-21T11:15:25.000Z"
+      },
+      {
+        "id": 9,
+        "HeartBeat": "84",
+        "BloodSugar": "3.5",
+        "BloodPressure": "126",
+        "Temperature": "37.0",
+        "timestamp": "2019-03-20T14:30:55.000Z"
+      },
+      {
+        "id": 10,
+        "HeartBeat": "63",
+        "BloodSugar": "2.2",
+        "BloodPressure": "114",
+        "Temperature": "36.3",
+        "timestamp": "2018-03-19T09:20:20.000Z"
+      }
+  ]
 }

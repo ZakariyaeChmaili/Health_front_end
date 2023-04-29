@@ -1,0 +1,47 @@
+<h2 mat-dialog-title>Add New Vaccine</h2>
+<mat-dialog-content class="mat-typography">
+  <form [formGroup]="vaccineFormGroup">
+    <div class="row">
+      <div class="col-sm-6">
+        <mat-form-field class="small mb-1">
+          <mat-label>Type</mat-label>
+          <input formControlName="type" matInput />
+        </mat-form-field>
+      </div>
+      <div class="col-sm-6">
+        <mat-form-field appearance="fill" class="example-form-field">
+          <mat-label>Choose a date</mat-label>
+          <input
+            formControlName="datecrea"
+            matInput
+            [matDatepicker]="datepicker"
+          />
+          <mat-hint>MM/DD/YYYY</mat-hint>
+          <mat-datepicker-toggle
+            matIconSuffix
+            [for]="datepicker"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #datepicker>
+            <mat-datepicker-actions>
+              <button mat-button matDatepickerCancel>Cancel</button>
+              <button mat-raised-button color="primary" matDatepickerApply>
+                Apply
+              </button>
+            </mat-datepicker-actions>
+          </mat-datepicker>
+        </mat-form-field>
+      </div>
+    </div>
+
+<div class="row">
+  <mat-form-field class="example-full-width">
+    <mat-label>Observation</mat-label>
+    <textarea formControlName="observation" matInput placeholder="..."></textarea>
+  </mat-form-field>
+</div>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button mat-button (click)="addVaccine()" cdkFocusInitial>Add</button>
+</mat-dialog-actions>
