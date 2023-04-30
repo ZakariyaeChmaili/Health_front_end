@@ -26,6 +26,7 @@ export class NavbarComponent {
 
   logout(){
     localStorage.removeItem('user');
+    localStorage.clear();
     // window.location.reload();
     this.route.navigate(['/landing-page'])
   }

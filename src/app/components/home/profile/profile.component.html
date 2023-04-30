@@ -12,11 +12,11 @@
             alt=""
           />
           <!-- Profile picture help block-->
-          <div class="small font-italic text-muted mb-4">
+          <!-- <div class="small font-italic text-muted mb-4">
             JPG or PNG no larger than 5 MB
-          </div>
+          </div> -->
           <!-- Profile picture upload button-->
-          <button mat-raised-button type="button">Upload new image</button>
+          <!-- <button mat-raised-button type="button">Upload new image</button> -->
         </div>
       </div>
     </div>
@@ -26,7 +26,7 @@
         <div class="card-header">Account Details</div>
         <div class="card-body">
           <form [formGroup]="profileFormGroup">
-            <mat-form-field class="col-12 small mb-1">
+            <mat-form-field class="col-12  mb-1">
               <mat-label>Address</mat-label>
               <input matInput formControlName="addresse" />
             </mat-form-field>
@@ -123,9 +123,13 @@
 
             <!-- Save changes button-->
             <div class="d-flex justify-content-end">
-              <button color="primary" mat-raised-button (click)="updatePerson()" type="button">
-                Save changes
-              </button>
+              <ng-container *ngIf="loadingFlag else loading">
+                <button color="primary" mat-raised-button (click)="updatePerson()" type="button">
+                  Save changes
+                </button>
+              </ng-container>
+
+
             </div>
           </form>
         </div>
@@ -133,3 +137,8 @@
     </div>
   </div>
 </div>
+
+
+<ng-template #loading>
+  <mat-spinner [diameter]="32"></mat-spinner>
+</ng-template>

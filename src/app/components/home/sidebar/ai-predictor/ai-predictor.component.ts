@@ -26,9 +26,11 @@ predict(){
   }
   this.aiService.predict(data).subscribe({
     next:(res:any)=>{
-      console.log(res);
-      this.predictedValue = res;
-      this.flag = !this.flag;
+      setTimeout(()=>{
+        console.log(res);
+        this.predictedValue = res;
+        this.flag = !this.flag;
+      },1500)
     }
   })
 }

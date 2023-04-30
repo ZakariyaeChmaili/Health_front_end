@@ -2,6 +2,7 @@ import { LiveAnnouncer } from '@angular/cdk/a11y';
 import { AfterViewInit, Component, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatSort, Sort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
@@ -38,7 +39,8 @@ export class ReportsComponent implements AfterViewInit {
     private reportService: ReportService,
     public dialog: MatDialog,
     private route: Router,
-    private generatedCodeService: GeneratedCodeService
+    private generatedCodeService: GeneratedCodeService,
+    private snackBar : MatSnackBar
   ) {
     console.log('you are in reports');
     this.flag = this.user.role == 'doctor' ? true : false;
@@ -72,18 +74,8 @@ export class ReportsComponent implements AfterViewInit {
         console.log(err);
       },
     });
-    // this.dataSource = new MatTableDataSource<Report>(this.user.listeRapport);
-    // this.reportService.getReports(this.id).subscribe({
-    //   next: (res: any) => {
-    //     this.dataSource = new MatTableDataSource<Report>(res);
-    //   },
-    //   error: (err: any) => {
-    //     console.log(err);
-    //   },
-    // });
   }
   ngAfterViewInit() {
-    // this.dataSource.paginator = this.paginator;
   }
 
   reportForm() {
@@ -93,6 +85,7 @@ export class ReportsComponent implements AfterViewInit {
       if (result) {
         this.reportService.addReport(result).subscribe({
           next: (res: any) => {
+            this.snackBar.open('Report added successfully', 'close', {duration: 2000});
             this.getReport();
           },
         });

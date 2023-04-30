@@ -1,6 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { GeneratedCodeService } from 'src/app/components/home/services/generatedCode/generated-code.service';
@@ -34,7 +35,8 @@ export class VaccineComponent {
     private vaccineService: VaccineService,
     private route: Router,
     private generatedCodeService: GeneratedCodeService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private snackBar: MatSnackBar
   ) {
     this.user = JSON.parse(localStorage.getItem('user')!);
     this.flag = this.user.role == 'doctor' ? true : false;
@@ -73,13 +75,14 @@ export class VaccineComponent {
   }
 
   vaccineForm() {
-    this.dialog.open(VaccineFormComponent);
+    // this.dialog.open(VaccineFormComponent);
     const dialogRef = this.dialog.open(VaccineFormComponent);
     dialogRef.afterClosed().subscribe((result) => {
       console.log(result);
       if (result) {
         this.vaccineService.addVaccine(result).subscribe({
           next: (res: any) => {
+            this.snackBar.open('vaccine added successfully', 'close', {duration:2000});
             this.getVaccines();
             // this.dialog.closeAll();
           },

@@ -1,6 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { ReloadService } from 'src/app/components/home/services/reload/reload.service';
 
 @Component({
@@ -16,6 +17,7 @@ export class ReportFormComponent implements OnInit {
   constructor(private fb: FormBuilder,
     @Inject(MAT_DIALOG_DATA) public data:any,
     private dialogRef:MatDialogRef<ReportFormComponent>,
+    private snackBar : MatSnackBar
     ) {
     // console.log(this.hideRequiredControl)
     let user:any = JSON.parse(localStorage.getItem("user")!);
@@ -58,6 +60,7 @@ export class ReportFormComponent implements OnInit {
   }
 
   addReport(){
+    this.snackBar.open('adding report...');
     console.log(this.reportFromGroup.value);
     this.data = this.reportFromGroup.value;
     if(this.reportFromGroup.valid)

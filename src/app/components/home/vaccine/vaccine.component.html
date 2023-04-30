@@ -1,21 +1,28 @@
 <div class="container mt-4">
   <div class="row justify-content-center">
     <mat-form-field class="col col-8">
-      <input [(ngModel)]="kword" matInput placeholder="Search" (keyup.enter)="searchVaccin()" />
-      <mat-icon matSuffix>search</mat-icon>
+      <input
+        [(ngModel)]="kword"
+        matInput
+        placeholder="Search By Type"
+        (keyup.enter)="searchVaccin()"
+      />
+      <button
+        matSuffix
+        color="accent"
+        (click)="searchVaccin()"
+        mat-mini-fab
+        aria-label="Example icon button with a vertical three dot icon"
+      >
+        <mat-icon>search</mat-icon>
+      </button>
     </mat-form-field>
 
-<ng-container *ngIf="flag">
-  <button
-  class="ms-3"
-  mat-fab
-  color="primary"
-  (click)="vaccineForm()"
->
-  <mat-icon >add</mat-icon>
-</button>
-</ng-container>
-
+    <ng-container *ngIf="flag">
+      <button class="ms-3" mat-fab color="primary" (click)="vaccineForm()">
+        <mat-icon>add</mat-icon>
+      </button>
+    </ng-container>
   </div>
   <div class="row">
     <div class="col">
@@ -45,12 +52,12 @@
           <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
         </table>
 
-        <mat-paginator
+        <!-- <mat-paginator
           [pageSizeOptions]="[5, 10, 20]"
           showFirstLastButtons
           aria-label="Select page of periodic elements"
         >
-        </mat-paginator>
+        </mat-paginator> -->
       </div>
     </div>
   </div>

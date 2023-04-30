@@ -13,6 +13,7 @@ import { IndexComponent } from './index.component';
 import { SignupComponent } from './signup/signup.component';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
     MatIconModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    MatProgressSpinnerModule
   ]
 })
 export class AuthenticationModule { }

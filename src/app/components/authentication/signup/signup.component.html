@@ -1,8 +1,5 @@
 <!-- Section: Design Block -->
 <section class="background-radial-gradient overflow-hidden">
-
-
-
   <div class="container px-4 py-5 px-md-5 text-center text-lg-start my-5">
     <div class="row gx-lg-5 align-items-center mb-5">
       <div class="col-lg-6 mb-5 mb-lg-0" style="z-index: 10">
@@ -36,7 +33,6 @@
             <form [formGroup]="personneForm" (ngSubmit)="onSubmit()">
               <!-- 2 column grid layout with text inputs for the first and last names -->
               <div class="row">
-
                 <div class="col-md-6 mb-4">
                   <div class="form-outline">
                     <mat-form-field appearance="fill">
@@ -69,12 +65,18 @@
                   <div class="form-outline">
                     <mat-form-field appearance="fill">
                       <mat-label>Date de naissance</mat-label>
-                      <input formControlName="datenaiss" matInput [matDatepicker]="picker">
+                      <input
+                        formControlName="datenaiss"
+                        matInput
+                        [matDatepicker]="picker"
+                      />
                       <mat-hint>MM/DD/YYYY</mat-hint>
-                      <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                      <mat-datepicker-toggle
+                        matIconSuffix
+                        [for]="picker"
+                      ></mat-datepicker-toggle>
                       <mat-datepicker #picker></mat-datepicker>
                     </mat-form-field>
-
                   </div>
                 </div>
               </div>
@@ -92,7 +94,7 @@
                   <div class="form-outline">
                     <mat-form-field appearance="fill">
                       <mat-label>Nationalité</mat-label>
-                      <input matInput formControlName="nasionality" />
+                      <input matInput formControlName="nationality" />
                     </mat-form-field>
                   </div>
                 </div>
@@ -156,9 +158,11 @@
               </div>
               <!-- submit button -->
               <div class="d-flex justify-content-end">
-                <button type="submit" mat-raised-button color="primary">
-                  Enregistrer
-                </button>
+                <ng-container *ngIf="loadingFlag; else loading">
+                  <button type="submit" mat-raised-button color="primary">
+                    Enregistrer
+                  </button>
+                </ng-container>
               </div>
             </form>
           </div>
@@ -168,3 +172,7 @@
   </div>
 </section>
 <!-- Section: Design Block -->
+
+<ng-template #loading>
+  <mat-spinner [diameter]="32"></mat-spinner>
+</ng-template>

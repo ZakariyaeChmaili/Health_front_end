@@ -21,7 +21,11 @@
                   <div class="form-outline mb-4">
                     <mat-form-field appearance="fill">
                       <mat-label>UserName</mat-label>
-                      <input formControlName="username" matInput placeholder="Placeholder" />
+                      <input
+                        formControlName="username"
+                        matInput
+                        placeholder="Placeholder"
+                      />
                       <mat-icon matSuffix>person</mat-icon>
                     </mat-form-field>
                   </div>
@@ -29,25 +33,33 @@
                   <div class="form-outline mb-4">
                     <mat-form-field appearance="fill">
                       <mat-label>Enter your password</mat-label>
-                      <input formControlName="password" matInput
-                      type="password"
+                      <input
+                        formControlName="password"
+                        matInput
+                        type="password"
                       />
                       <mat-icon matSuffix>lock</mat-icon>
                     </mat-form-field>
                   </div>
 
-                  <div class="text-center pt-1 mb-5 pb-1">
-                    <button
-                    (click)="login()"
+                  <div class="text-center d-flex justify-content-center pt-1 mb-5 pb-1">
+                    <ng-container *ngIf="loadingFlag; else loading">
+                      <button
+                        (click)="login()"
+                        mat-raised-button
+                        class="me-3"
+                        color="primary"
+                        type="button"
+                      >
+                        Log in
+                      </button>
+                    </ng-container>
 
-                      mat-raised-button
-                      class="me-3"
-                      color="primary"
-                      type="button"
-                    >
-                      Log in
-                    </button>
-                    <a class="text-muted" href="#">Forgot password?</a>
+                    <ng-template #loading>
+                      <mat-spinner  [diameter]="32"></mat-spinner>
+                    </ng-template>
+
+                    <!-- <a class="text-muted" href="#">Forgot password?</a> -->
                   </div>
 
                   <div

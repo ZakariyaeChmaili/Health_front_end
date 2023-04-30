@@ -12,9 +12,11 @@ import { MatButtonModule } from '@angular/material/button';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BlockComponent } from './components/block/block.component';
 import { HttpInterceptorService } from 'src/app/components/authentication/services/http-interceptor.service';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 @NgModule({
-  declarations: [AppComponent, BlockComponent],
+  declarations: [AppComponent, BlockComponent,],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -22,8 +24,9 @@ import { HttpInterceptorService } from 'src/app/components/authentication/servic
     MatCardModule,
     MatProgressBarModule,
     MatButtonModule,
-
+    MatSnackBarModule,
     HttpClientModule,
+    MatProgressSpinnerModule
   ],
   providers: [
     {

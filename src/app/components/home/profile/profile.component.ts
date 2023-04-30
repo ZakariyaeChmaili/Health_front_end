@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { PatientService } from 'src/app/components/home/services/patient/patient.service';
 import { PersonService } from 'src/app/components/home/services/person/person.service';
 
@@ -9,12 +10,15 @@ import { PersonService } from 'src/app/components/home/services/person/person.se
   styleUrls: ['./profile.component.scss'],
 })
 export class ProfileComponent implements OnInit {
+  loadingFlag = true;
   profileFormGroup!: FormGroup;
   user: any;
   isDoctor: boolean;
   constructor(private fb: FormBuilder,
     private doctorService : PersonService,
-    private patientService: PatientService) {
+    private patientService: PatientService,
+    private snackBar: MatSnackBar,
+    ) {
     this.user = JSON.parse(localStorage.getItem('user')!);
     this.isDoctor = this.user.role == 'doctor' ? true : false;
     this.profileFormGroup = this.fb.group({
@@ -40,11 +44,21 @@ export class ProfileComponent implements OnInit {
 
   updatePerson(){
     console.log(this.profileFormGroup.value);
+    this.loadingFlag = !this.loadingFlag;
+    this.snackBar.open('updating in progress...', 'close');
+
     if(this.isDoctor){
       this.doctorService.updateDoctor(this.profileFormGroup.value,this.user.id).subscribe({
         next: (res:any)=>{
           console.log(res);
           localStorage.setItem('user',JSON.stringify(res));
+          this.loadingFlag = !this.loadingFlag;
+          this.snackBar.open('profile has been updated', 'close');
+        },
+        error: (err:any)=>{
+          console.log(err);
+          this.loadingFlag = !this.loadingFlag;
+          this.snackBar.open('update failed', 'close');
         }
       })
     }else{
@@ -52,6 +66,13 @@ export class ProfileComponent implements OnInit {
         next: (res:any)=>{
           console.log(res);
           localStorage.setItem('user',JSON.stringify(res));
+          this.loadingFlag = !this.loadingFlag;
+          this.snackBar.open('profile has been updated', 'close');
+        },
+        error: (err:any)=>{
+          console.log(err);
+          this.loadingFlag = !this.loadingFlag;
+          this.snackBar.open('update failed', 'close');
         }
       })
 

@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 import { AuthenticationService } from 'src/app/components/authentication/services/authentication.service';
 
 @Component({
@@ -9,10 +11,12 @@ import { AuthenticationService } from 'src/app/components/authentication/service
 })
 export class SignupComponent {
   personneForm: FormGroup;
-
+  loadingFlag = true;
   constructor(
     private fb: FormBuilder,
-    private authenticationService: AuthenticationService
+    private authenticationService: AuthenticationService,
+    private snackBar: MatSnackBar,
+    private route : Router
   ) {
     this.personneForm = this.fb.group({
       cni: ['', Validators.required],
@@ -20,16 +24,16 @@ export class SignupComponent {
       prenom: ['', Validators.required],
       datenaiss: ['', Validators.required],
       ville: ['', Validators.required],
-      nasionality: ['', Validators.required],
+      nationality: ['', Validators.required],
       sexe: ['', Validators.required],
       sutuaFamil: ['', Validators.required],
       tel: ['', Validators.required],
       addresse: ['', Validators.required],
       password: ['', Validators.required],
       cpassword: ['', Validators.required],
-      nommere: ['', Validators.required],
-      nompere: ['', Validators.required],
-      poids: ['', Validators.required],
+      nommere: [''],
+      nompere: [''],
+      poids: [''],
       role: ['patient'],
     });
   }
@@ -39,15 +43,23 @@ export class SignupComponent {
   onSubmit() {
     const personne: any = this.personneForm.value;
     console.log(personne);
-
-    this.authenticationService.signup(this.personneForm.value).subscribe({
-      next: (data) => {
-        console.log(data);
-      },
-      error:err=>{
-        console.log(err)
-      }
-    });
-    // Add logic here to send the form data to the server or perform any other required actions
+    console.log(this.personneForm);
+    if (this.personneForm.valid) {
+      this.loadingFlag = !this.loadingFlag;
+      this.snackBar.open('signup in progress...', 'close');
+      this.authenticationService.signup(this.personneForm.value).subscribe({
+        next: (data) => {
+          this.snackBar.dismiss();
+          this.loadingFlag = !this.loadingFlag;
+          console.log(data);
+          this.route.navigate(["authentication/login"])
+        },
+        error: (err) => {
+          this.loadingFlag = !this.loadingFlag;
+          this.snackBar.open('signup failed', 'close');
+          console.log(err);
+        },
+      });
+    }
   }
 }
