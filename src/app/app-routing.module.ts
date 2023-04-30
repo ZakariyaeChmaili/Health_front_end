@@ -1,11 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { BlockComponent } from 'src/app/components/block/block.component';
+import { AuthenticationGuard } from 'src/app/guards/authentication.guard';
 
 const routes: Routes = [
   { path: '', redirectTo: 'landing-page', pathMatch: 'full' },
   {
     path: 'authentication',
+    canActivate:[AuthenticationGuard],
     loadChildren: () =>
       import('./components/authentication/authentication.module').then(
         (m) => m.AuthenticationModule
@@ -13,6 +15,7 @@ const routes: Routes = [
   },
   {
     path: 'landing-page',
+    canActivate:[AuthenticationGuard],
     loadChildren: () =>
       import('./components/landing-page/landing-page.module').then(
         (m) => m.LandingPageModule

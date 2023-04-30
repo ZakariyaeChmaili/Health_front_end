@@ -7,10 +7,11 @@ import { VaccineComponent } from 'src/app/components/home/vaccine/vaccine.compon
 import { ReportsGuard } from 'src/app/guards/reports.guard';
 import { ReportDetailsComponent } from 'src/app/components/home/report-details/report-details.component';
 import { DashboardComponent } from 'src/app/components/home/dashboard/dashboard.component';
+import { AuthenticationGuard } from 'src/app/guards/authentication.guard';
 
 const routes: Routes = [
   {path:'',pathMatch:'full',redirectTo:'profile'},
-  {path:'', component:HomeIndexComponent,children:[
+  {path:'',component:HomeIndexComponent,children:[
     {path:'reports',canActivate:[ReportsGuard], component:ReportsComponent},
     {path:'reports/:id',canActivate:[ReportsGuard], component:ReportDetailsComponent},
     {path:'vaccines',component:VaccineComponent,canActivate:[ReportsGuard]},
