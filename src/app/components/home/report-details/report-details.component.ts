@@ -25,15 +25,5 @@ export class ReportDetailsComponent {
         this.traitmentList = res.listeTraitement;
       }
     });
-
-
-    // console.log(this.report);
-    // let traitment:any[] =this.report.listeTraitement;
-    // // console.log(rapport)
-    // if(traitment.length>0){
-    //   // this.traitmentList = rapport.listeTraitment;
-    // }else{
-    //   this.traitmentList=[];
-    // }
   }
 }

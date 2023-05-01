@@ -27,7 +27,7 @@ export class ReportFormComponent implements OnInit {
       datecrea: ['',Validators.required],
       doctor: {id:user.id},
       patient: {id:patient.id},
-      // traitement_id: [654],
+      description: ['',Validators.required],
       bloodPressure:['',Validators.required],
       bloodSugar:['',Validators.required],
       heartBeat:['',Validators.required],

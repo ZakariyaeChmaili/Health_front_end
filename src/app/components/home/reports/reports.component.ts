@@ -30,7 +30,7 @@ export class ReportsComponent implements AfterViewInit {
   user: any = JSON.parse(localStorage.getItem('user')!);
   patient: any = JSON.parse(localStorage.getItem('patient')!);
   id: number;
-  displayedColumns: string[] = ['id_Repo', 'titre', 'datecrea', 'details'];
+  displayedColumns: string[] = ['id_Repo', 'titre','description', 'datecrea', 'details'];
   dataSource!: MatTableDataSource<Report>;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
