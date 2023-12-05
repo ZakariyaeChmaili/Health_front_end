@@ -1,3 +1,4 @@
 # HealthFrontEnd
-
-this is the frontend of an app web that used spring boot and security mysql as backend and angular as front 
+application is about managing your medical history, and communicating with your doctor 
+this is the frontend of https://github.com/ZakariyaeChmaili/Health-Back-end
+an app that use angular
